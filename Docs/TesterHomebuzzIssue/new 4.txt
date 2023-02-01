@@ -1,0 +1,10 @@
+1. Pop up text box 
+2. Flow lines later over marker labels 
+3. On roll over marker label comes to front on roll off marker label goes back to original position 
+4. Update Flowinterest code with if hot check views if 1 view make stable if 2+ views keep hot 
+5. Up date ViewerStrenght formula to only calculate based off first 66% of data used to calculate Flowinterest
+
+for first one :
+
+The three line restriction in black box pop up is not fixing the issue. 
+And don't limit to three lines. Simple fix remove speech arrow just have rounded box pop up.

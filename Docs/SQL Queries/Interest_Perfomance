@@ -1,0 +1,33 @@
+SELECT CAST(SUM(CAST(pd.ViewCount AS float))/COUNT(CAST(pd.ViewCount AS float)) as DECIMAL(10,2)) from PropertyCrudData pc
+	INNER JOIN PropertyDetail pd ON pc.PropertyDetailId = pd.id 
+	WHERE 
+	pc.Bedrooms = 1
+	AND pc.Bathrooms = 1
+	AND pc.Suburb = 'Epsom'
+
+	SELECT ROUND(CAST(AVG(CAST(pd.ViewCount as DECIMAL(10,2))) AS DECIMAL(10,2)),0) AS SQLAVG   from PropertyCrudData pc
+	INNER JOIN PropertyDetail pd ON pc.PropertyDetailId = pd.id 
+	WHERE 
+	pc.Bedrooms = 1
+	AND pc.Bathrooms = 1
+	AND pc.Suburb = 'Epsom'
+
+	SELECT CAST(AVG(CAST(pd.ViewCount as DECIMAL(10,2))) AS DECIMAL(10,2)) AS SQLAVG   from PropertyCrudData pc
+	INNER JOIN PropertyDetail pd ON pc.PropertyDetailId = pd.id 
+	WHERE 
+	pc.Bedrooms = 1
+	AND pc.Bathrooms = 1
+	AND pc.Suburb = 'Epsom'
+
+	(SELECT ROUND(CAST(AVG(CAST(pd.ViewCount as DECIMAL(10,2))) AS DECIMAL(10,2)),0) from PropertyCrudData pc
+	INNER JOIN PropertyDetail pdd ON pc.PropertyDetailId = pdd.Id
+	WHERE 
+	pc.Bedrooms = p.Bedrooms
+	AND pc.Bathrooms = p.Bathrooms
+	AND pc.Suburb = p.Suburb )
+
+	SELECT * from PropertyCrudData pc where PropertyDetailId = 5
+
+	SELECT * from PropertyDetail pc where Id = 5 OR Id = 7
+
+	Update PropertyDetail set ViewCount = 3 where Id = 7

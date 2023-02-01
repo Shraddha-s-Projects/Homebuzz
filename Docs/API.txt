@@ -1,0 +1,59 @@
+	1: AddUpdateProperty
+	---------------------
+	POST //api/PropertyDetail/AddUpdateProperty
+	Host: localhost:5000
+	Content-Type: application/json
+	Cache-Control: no-cache
+	Postman-Token: 9dfb1609-ad4a-746a-9833-2dbb0788cf0f
+	
+	{
+		"IsActive" : 1,
+		"ViewCount" : 3,
+		"IsClaimed" : 0,
+		"Status" : "VIEWED",
+		"PropertyId" : 3,
+		"OwnerId" : 4
+	}
+	
+	2.GetAll
+	
+	GET //api/PropertyData/GetAll?searchTerm=abc&amp;period=30 
+	Host: localhost:5000
+	Content-Type: application/json
+	Cache-Control: no-cache
+	Postman-Token: 6e88c5f5-7dc5-4cfb-434b-ccbf4223f719
+	
+	3. AddEditProperty
+	
+	    POST //api/PropertyData/AddEditProperty HTTP/1.1
+		Host: localhost:5000
+		Content-Type: application/json
+		Cache-Control: no-cache
+		Postman-Token: eb3ccda2-e759-b726-d8ed-e25b3952d878
+		
+		{
+		"PropertyDetailId": 7
+		"Address":"1205 Te Hapua Road, Te Hapua, Te Kao, 0484",
+		"Bedrooms": 1,
+		"Bathrooms": 1,
+		"Carparks" : 1,
+		"Landarea": 111,
+		"IsClaimed": 1,
+		"ViewCount": 2,
+		"OwnerId": 4,
+		"UserLiked": 0,
+		"UserOffered": 1
+		}
+		
+	4.LikeDislikeProperty
+	
+	POST //api/PropertyLike/LikeDislikeProperty HTTP/1.1
+	Host: localhost:5000
+	Content-Type: application/json
+	Cache-Control: no-cache
+	Postman-Token: 2b101b10-f4a2-f228-78fd-4d93c376f020
+	
+	{
+		"PropertyDetailId": 7,
+		"UserId": 5
+	}

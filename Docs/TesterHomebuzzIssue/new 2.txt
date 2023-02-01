@@ -1,0 +1,48 @@
+
+2. When search Home, In map screen display single MAN icon, Home is: Domett Avenue, Epsom, Auckland 1023, New Zealand => Disscuss
+
+4. When user enter a mnually price in price filter then price display outside of the text box in filter area. Add Min and Max price Manually and check.
+
+5. When i Filter record with Home status, then loader continuous loaded. (Search any single home address, Zoom out the map and after filter the record. Address is : 29 Glenfell Place, Epsom, Auckland )
+
+6. On reset password page> Password and Repeat password field, Remove the space before the placeholder text, and text should start beside of the field.
+
+8. System get crashed when i do multiple likes on Home. (I have does multiple likes the Home at a time. Up to 10 to 15 then after view any property and like home from that and close the view home panel then after user not able to do anything in the screen).
+
+19. When Normal LogIn user click on Agent label(beside of menu bar) then user redirect to Login page, so do it appropriate. => Done
+
+21. Go to edit property> Bath field display NAN, so remove it.=> Need to disscuss with client
+
+22. In Map screen> Viewed home does not closed after user do Zoom in and out the map and drag the MAP.
+
+23. Agent user account> When i List the property then at the time Property status not chnaged, Like List property.=>Done
+
+24.  When i save the search record with Filtering STATUS, in save search popup, record display with status filter values is empty. > Record not loaded at the time.
+
+25. Search home from Saved searches, then before sorted price filter not match with save search criteria. Price filter not clear.(i will explain you). => Done
+
+26. Search home from Saved searches > Search home from dashboard and go to search again in search result page, then user not able tos search it. => Done
+
+27. Sometime i can't see the home after claim. search result page
+
+28. Agent Dashboard page> Sales Leads tab> When Listing the home then display "Property already claimed" 
+and home address not moved to Listing tab at the time. (But user can claim the home, Just display validation message). =>Done
+
+29. Record sorting not working with date. Agent dashboard module.................... 
+
+
+30. Spelling mistake in View home detail, top menu bar(Property overview) Link. =>Done
+
+31. Property overview tab> When user click on any menu item then page not scrolling down to proper area.
+
+32. View Porperty detail page> Estimate price display same of all the proeprty, So make it dynamically. =>Done
+
+33. View Porperty detail page> Similar property in area , Similar property not display in MAP at bottom of the page. (i think it some times not load properly).
+
+33. In Mobile device: Surrounding suburb not working.
+
+34. Design: Mobile device> View Property detail cancel icon not display.
+
+
+
+(node:13408) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.

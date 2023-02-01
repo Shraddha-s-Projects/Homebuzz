@@ -1,0 +1,99 @@
+
+> Need to verify Forgot password Email for "Verify URL " text. 
+> Not able to update user detail in edit user page. Also need ot verify some field values as per registration time submitted.
+> Marker text color effect not changes as per airbnb website after clicking on label and closing it.
+> View property detail page> Bottom of map screen> When i view first home then it is display outside of content then after display proper. ///Already assigned video.
+> need to check task for similar homes in view property detai tab bottom of the page MAP.
+> When i search record from My searched panel then Black popup not dispaly proper in MAP screen.
+> In view peoperty detail page> MAP image not reflect at the time in tile when user view the home.
+> Search record from My Searches panel from dashboard page, then record not display as per filtered save searched status wise, and all the property marker display with STABLE label. Filter record is: Day: 22 to 28, Status: not listed, for sale, Price 1m to 5m, Beds bath: 1+, 1.
+> Mozilla browser> Map Screen> Markertr label not display.
+> View Property detail tab> images repeated whe i upload 3 or more iamges.
+> When i transfer property to another then after user able to edit home detail after transfer it, SO this is not valid. At the time status not changed.
+> Share property tab> When i share the property with Facebook and login then after display an error, So check this is valid or not.
+
+
+> Forgot password> OTP verification page> Remove the padding between validation message & field. ///KP Done
+> Registration & Forgot password verification page> Need to maintain spacing between logo and description text. Also that Verification field radius not applied at left side of the border. ///KP
+> Create New password page> Add the space after period(.) in top description text. ///KP
+> Create New password page> Need to change repeat password validation message. ///KP
+> Need to maintain spacing in edit user detail page. ///KP
+> Logo not properly alligned in agentdashboard module. Agwnt user login. ///KP
+> All the popup> Home icon and propertyFlow text not aligned properly as per requirement. ///KP
+
+
+
+--------------------------------------------------------------
+
+
+$(function () {
+    demoMap = {
+        initMap: function () {
+            var myLatlng = new google.maps.LatLng(41.097905, -73.405006);
+            var myOptions = {
+                zoom: 16,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            this.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+            this.addMarker();
+        },
+
+        addMarker: function () {
+            var self = this;
+            var contentString = "<div id='content'>";
+            contentString += "<div id='title'>Mr. Frosty's Deli and Grill</div>";
+            contentString += "<div id='info'><p>10 1st Street</p><p>Norwalk, CT 06855</p><p>(203) 956-5767</p><p><a href='http://thebeachburger.com/'>thebeachburger.com‎</a></p></div></div>";
+
+            var latlng = this.map.getCenter();
+
+            var marker = new google.maps.Marker({
+                position: latlng,
+                map: this.map,
+                title: "Mr. Frosty's Deli and Grill"
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                disableAutoPan: true               
+            });
+
+            google.maps.event.addListener(marker, 'mouseover', function () {
+                infowindow.setOptions({pixelOffset : self.getInfowindowOffset(self.map, marker)});
+                infowindow.open(self.map, marker);
+            });
+            google.maps.event.addListener(marker, 'mouseout', function () {                
+                infowindow.close();
+            });
+        },
+
+        getInfowindowOffset: function (map, marker) {
+            var center = this.getPixelFromLatLng(map.getCenter()),
+                point = this.getPixelFromLatLng(marker.getPosition()),
+                quadrant = "",
+                offset;
+            quadrant += (point.y > center.y) ? "b" : "t";
+            quadrant += (point.x < center.x) ? "l" : "r";            
+            if (quadrant == "tr") {
+                offset = new google.maps.Size(-70, 185);
+            } else if (quadrant == "tl") {
+                offset = new google.maps.Size(70, 185);
+            } else if (quadrant == "br") {
+                offset = new google.maps.Size(-70, 20);
+            } else if (quadrant == "bl") {
+                offset = new google.maps.Size(70, 20);
+            }
+
+            return offset;
+        },
+
+        getPixelFromLatLng: function (latLng) {
+            var projection = this.map.getProjection();          
+            var point = projection.fromLatLngToPoint(latLng);
+            return point;
+        }
+    }
+
+    demoMap.initMap();
+})();

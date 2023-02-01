@@ -1,0 +1,28 @@
+1. ON Search result page> When i refresh the page and search home on search field then user not able to found its related searches. Done
+
+12.  Admin user> User module> User name column, title Placeholder textbox text display wrong. Currently it display as LastName. => Done
+
+13. Admin user> User module>When i go to delete any user then display erroe "Something went wrong". => Done
+
+3. In MAP screen, For highest to lowest Viewer count color display white when user do the zoom out and In the map. => Disscuss Done
+
+20. In Map screen, Active home icon not display but in Home grid display upto 100s of records.  => Done
+
+9. View Home detail popup> Click on share icon then popup get display, For Copy Link, I copied link and past it to broser user then that property not display, and display 404 not found. =>Done.
+
+7. View Home detail popup> Bottom of the page> When i click on PropertyLight Logo then background page redirect to Dashboard page, but popup not get closed, So make this link disable or do any other. => Done
+
+Admin Issues
+------------
+
+10. Admin user> "No record found" label not display when user search invalid record.
+
+11. Admin user> User module> Search with mobile no not working proper.
+
+14. Admin user> User module> Username column display user Email Id, So this is nnot valid. Actually i have submitted my username but that name not display in username grid. And =>
+
+16. Admin user> Pagination tab> When user search First page record from going to last page of pagination then user not able to found record.
+
+17. Need to verify> For properties tab> Address column> Sorting is working on Address Home No or address Name. => Admin
+
+18. Admin User> Properties tab> Latitude and longitude field not updated on edit time, so can we make it only readable field? =>Admin

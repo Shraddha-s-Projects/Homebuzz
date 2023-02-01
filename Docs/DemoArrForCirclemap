@@ -1,0 +1,45 @@
+----------------------------*  Demo array start  *-----------------------------------
+
+      var demoArr = [];
+      for (let index = 0; index < propArray.length; index++) {
+        var element = propArray[index];
+        if (element.PropertyDetailId == 3692 || element.PropertyDetailId == 3679 || element.PropertyDetailId == 3545) {
+          demoArr.push(element);
+        }
+      }
+      this.properties = demoArr;
+      for (let index = 0; index < demoArr.length; index++) {
+        var element1 = demoArr[index];
+
+        if (
+          element1.LatitudeLongitude &&
+          element1.LatitudeLongitude != "null"
+          // && this.searchTermViewPort.Lat
+          // && this.searchTermViewPort.Lng
+        ) {
+          let lat = 0;
+          let lng = 0;
+
+          lat = parseFloat(element1.LatitudeLongitude.split(",")[0]);
+          lng = parseFloat(element1.LatitudeLongitude.split(",")[1]);
+          var radius = 30;
+          if (index == 1) {
+            radius = 60;
+          } else if (index == 2) {
+            radius = 100;
+          }
+
+          var center = new google.maps.LatLng(lat, lng);
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#2196f3',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#2196f3',
+            fillOpacity: 0.35,
+            map: _this.map,
+            center: center,
+            radius: radius
+          });
+        }
+      }
+      -----------*Demo array end*---------------------

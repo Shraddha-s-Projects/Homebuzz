@@ -1,0 +1,81 @@
+--select * from PropertyCrudData where Suburb = 'Epsom'
+
+--select TOP 500 dbo.SplitStrings(LatitudeLongitude) as aaa * from PropertyData
+DECLARE @Latitude DECIMAL(10,4)
+
+SELECT @Latitude =  LEFT(p.LatitudeLongitude, CHARINDEX(',', p.LatitudeLongitude)) from PropertyData p
+Update PropertyData SET 
+Latitude = 
+ SET @Latitude = select LEFT(p.LatitudeLongitude, CHARINDEX(',', p.LatitudeLongitude)) from PropertyData p ,
+		 RIGHT(p.LatitudeLongitude, CHARINDEX(',', p.LatitudeLongitude) ) Longitude from PropertyData p
+--Use HomeBuzzTA
+--SELECT TOP 500  Id,GETDATE(),NULL,NULL,NULL,1,0,0,0,NULL,'Not listed',1,NULL,1,GETDATE() 
+--	FROM PropertyData 
+--	WHERE Suburb = 'Epsom' AND Id NOT IN (Select PropertyId from PropertyDetail)
+
+	--INSERT INTO PropertyDetail(PropertyId,ActivatedDate,AgentOption,Day,Description,IsActive,IsClaimed,IsOpenHome,IsShowAskingPrice,OpenedDate,Status,StatusId,Time,ViewCount,ViewedDate)
+	--SELECT TOP 500 Id,GETDATE(),NULL,NULL,NULL,1,0,0,0,NULL,'Not listed',1,NULL,1,GETDATE() 
+	--FROM PropertyData 
+	--WHERE Suburb = 'Epsom' AND Id NOT IN (Select PropertyId from PropertyDetail)
+
+	--Update PropertyCrudData  set PropertyCrudData.Latitude = LEFT(pcd.LatitudeLongitude, CHARINDEX(',', pcd.LatitudeLongitude)) ,
+	--PropertyCrudData.Longitude = RIGHT(pcd.LatitudeLongitude, CHARINDEX(',', pcd.LatitudeLongitude) )
+	--From PropertyCrudData pc JOIN PropertyDetail pd
+	--on pc.PropertyDetailId = pd.Id join 
+	--PropertyData pcd on pcd.Id = pd.PropertyId
+	--WHERE pc.Suburb = 'Epsom'
+
+	Update PropertyData set Latitude = CAST(LEFT(LatitudeLongitude, CHARINDEX(',', LatitudeLongitude)) As varchar(100)),
+		Longitude = CAST(RIGHT(LatitudeLongitude, CHARINDEX(',', LatitudeLongitude)) As varchar(100))
+
+		select * from TempMasterData
+
+
+
+
+
+	--INSERT INTO PropertyCrudData(PropertyDetailId,Address,HomebuzzEstimate,Bedrooms,Bathrooms,CarSpace,Landarea,LatitudeLongitude,Latitude,Longitude,BuildingType, Suburb, City)
+	--SELECT  pd.Id,Address,HomebuzzEstimate,Bedrooms,Bathrooms,CarSpace,Landarea,LatitudeLongitude,Latitude,Longitude,BuildingType, Suburb, City
+	--FROM PropertyData pc JOIN PropertyDetail pd
+	--On pc.Id = pd.PropertyId
+	--WHERE pc.Suburb = 'Epsom'
+	--AND pd.Id NOT IN (select PropertyDetailId from PropertyCrudData)
+
+	--select * from PropertyCrudData
+
+	--delete from PropertyAgent where PropertyDetailId > 6
+			--AND Id  IN (Select PropertyId from PropertyDetail)
+
+	--INSERT INTO PropertyView
+	--SELECT 
+	--PropertyDetailId,52,GETDATE(),'9281f621-5227-4704-b2e2-cc5bb89d9175' 
+	--FROM PropertyCrudData 
+	--WHERE Suburb = 'Epsom'
+	--		AND PropertyDetailId NOT IN (Select PropertyDetailId from PropertyView)
+
+
+
+			--select * from PropertyDetail where PropertyId = 561259
+
+
+	--select * from PropertyDetail  --Last PropertyDetailId = 6
+	--select * from PropertyCrudData --Last PropertyDetailId = 6
+	--select * from PropertyAgent  -- empty
+	--select * from PropertyClaim  --empty
+	-- select * from PropertyView
+
+	--update PropertyDetail set IsClaimed = 1, Status = 'Pre-market', StatusId = 2 where Id > 6
+
+	--Insert into PropertyAgent(PropertyDetailId, OwnerId, AgentOptionId, CreatedOn, UpdatedOn, AppraisalPrice)
+	--SELECT  Id, 52,1,GETDATE(), NULL, NULL
+	--from PropertyDetail
+	--where Id NOT IN (Select PropertyDetailId from PropertyAgent)
+	 --order by Id desc
+	 
+	 --select * from PropertyDetail
+
+
+
+
+	--Use HomebuzzLocal
+	--select * from PropertyDetail

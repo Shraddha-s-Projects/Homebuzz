@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "650a7f24-9f67-426c-b26c-1f6e3cc908f3",
+		"name": "HomeBuzz",
+		"description": "All APi related to Home Buzz\t",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Property Offer",
+			"item": [
+				{
+					"name": "Make Offer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKd3RBdXRoZW50aWNhdGlvbiIsImp0aSI6IjMyOGQ1Njg5LWM5MTgtNGMxOS1hYWJjLTUwNzM3NjJkMzEzNSIsImlhdCI6MTU2MDIzMzA5NSwiRW1haWwiOiJsYWRzIiwiU2lkIjoiNSIsIlJvbGUiOiIiLCJleHAiOjE1NjAyNjE4OTUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAvIn0.jsMuJZwLYplYrdJYdspWN2Oqlf5O8Umq93dBOOUnND4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"OfferingAmount\": \"10000\",\r\n\"PropertyDetailsId\": 605,\r\n\"UserId\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/PropertyOffer/MakeOffer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"PropertyOffer",
+								"MakeOffer"
+							]
+						},
+						"description": "Any User can make offer\t"
+					},
+					"response": []
+				},
+				{
+					"name": "User Offers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\": 5\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/PropertyOffer/UserOffers?userId=5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"PropertyOffer",
+								"UserOffers"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Get all offer for user\t"
+					},
+					"response": []
+				}
+			],
+			"description": "All Property related offers api\t"
+		},
+		{
+			"name": "Property Claims",
+			"item": [
+				{
+					"name": "Claim Property",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/PropertyClaim/ClaimProperty",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"PropertyClaim",
+								"ClaimProperty"
+							]
+						},
+						"description": "Whoever are owners those can claim property\t"
+					},
+					"response": []
+				},
+				{
+					"name": "User Claims",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/PropertyClaim/UserClaims?userId=5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"PropertyClaim",
+								"UserClaims"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "5"
+								}
+							]
+						},
+						"description": "All user claimed homes"
+					},
+					"response": []
+				}
+			],
+			"description": "Property claim related apis\t",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4dbeb68d-8ea8-4607-88bd-0783e0dd1e8c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef8faa82-cf62-4c23-ab2d-e839f0033915",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+					"name": "Upload Images",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "form-data",
+							"raw": "{\r\n\"fileList\": \"file\",\r\n\"PropertDetailId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/PropertyDetail/UploadFiles",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"PropertyDetail",
+								"UploadFiles"
+							]
+						},
+						"description": "Upload multiple images and save images into folder\t"
+					},
+					"response": []
+	    }
+	]
+}

@@ -1,0 +1,88 @@
+Step to DataImport into Table
+-----------------------------
+
+Right click on Database => Tasks => Import Data => Next => 
+
+Choose a Data source 
+
+DataSource : select Microsoft Excel
+
+Excel file path : select excel file path
+
+=> Click on NEXTweb
+
+=> choose a destination 
+
+	Destination : select Microsoft OLEDB Provider for SQL Server
+	
+	Authentication : write username and password
+	
+=> Click on NEXT
+
+=> Click on NEXT
+
+=> Select Source Tables and Views : Clickon EditMapping => check the mapping if any mismatch then select from dropdown list => Click on OK
+									Clickon Preview => for check data
+									
+=> Click on NEXT
+
+=> Click on NEXT
+
+=> Click on Finish button
+
+-------------------------------------
+Insert Data from One table to another
+-------------------------------------
+
+INSERT INTO PropertyData (Address, HomebuzzEstimate, Bedrooms, Bathrooms, Carparks, Landarea, LatitudeLongitude)
+SELECT Address, [HomebuzzEstimate Mar 2019], Bedrooms, Bathrooms, Carparks, LandArea, LatitudeLongitude
+FROM Sheet1$
+
+
+-----------------------------------
+Check duplicate entry in table
+-----------------------------------
+
+SELECT Address, COUNT(*)
+FROM PropertyData
+GROUP BY Address
+HAVING COUNT(*) > 1
+
+SELECT PropertyId,COUNT(*) occurrences FROM PropertyDetail GROUP BY PropertyId HAVING COUNT(*) > 1
+
+SELECT Address,COUNT(*) occurrences FROM PropertyCrudData GROUP BY Address HAVING COUNT(*) > 1
+
+-----------------------
+Remove Duplicate entry
+-----------------------
+
+DELETE FROM PropertyDetail WHERE PropertyId IN 
+ (
+  SELECT MIN(PropertyId) FROM PropertyDetail
+   GROUP BY  PropertyId HAVING COUNT(PropertyId)>1
+ )
+
+ DELETE FROM PropertyCrudData WHERE Address IN 
+ (
+  SELECT MIN(Address) FROM PropertyCrudData
+   GROUP BY  Address HAVING COUNT(Address)>1
+ )
+
+
+100000	14B Yarmouth Road, Flaxmere, Hastings, 4120	185000.00	3	1	1	-	-39.617881499999996, 176.787977  lakh1
+
+200001	5 Erin Street, Hawera, 4610	391000.00	3	1	2	441	-39.592823624625595, 174.2881470645377  lakh2
+
+500002	53C Park Terrace, Blenheim, 7201	352000.00	4	1	2	621	-41.512371907185347, 173.97078317674931  lakh 23
+
+700003	4658 State Highway 12, Kaikohe, 0473	134000.00	3	1	1	4047	-35.429902008108812, 173.7745326078583  lakh 24
+
+942335	117 Haukore Street, Hairini, Tauranga, 3112	978000.00	4	2	-	763	-37.724866143996039, 176.16098893742404  lakh 25
+
+
+----------------------------- Second ---------------------------------------
+
+1242335	2/2 Emily Place, Auckland Central, Auckland	944000.00	-	1	-	223	-36.845716934366806, 174.77067201626008  lakh31
+
+1542335	145 O'Donoghue Road, Te Aroha West	800000.00	4	4	2	1.2390 Ha	-37.58109229531216, 175.71713511092426    lakh32
+

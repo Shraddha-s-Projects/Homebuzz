@@ -1,0 +1,17 @@
+Alpesh Issue
+
+20200828
+----------
+
+> Display NAN for Edit prorty detail popup bath field. [Done]
+> Buyer Read More page> When user redirect on buyer page then page not display from top of the page. [Done]
+> In map screen PIN not display when i search home from search result popup[Mysearches]. (Search home with filtered all category). Already explained.
+> Sometimes when i claim the home then display message 'Home alredy claimed' but actually that home not claimed and when i refresh the page then after user able to see Edit Home detail button.
+> When user directly view the property page(Enter property page URL) then MAP and home gris loader continious loaded, So make it proper. [Done]
+> One porperty tile mage not dipslay, Only display white background. 17 calliope road, devopnport home.
+> Mobile device> Map screen> Home tile not display on duble clicking on pic icon. [Fixed]
+> Map screen interest popup box of pin icon cuts off in screen, so verify this is valid or not.
+> Where Bed bath is 0 and view that home then check smililar proerty in this area display wrong in map screeen (ViewPropertydetail page).
+> Mobile device> Menu bar> Display two icon for username label on top of the menu. [Disscuss]
+> Mobile device> Sign up page> Logo not aligned properly. Same issue in forgot password page.
+> Mobile device> Agent signup page> Menu not opened properly.

@@ -1,0 +1,64 @@
+ private ParseData getParsing(string columnValue)
+        {
+            ParseData parseData = new ParseData();
+            try
+            {
+                //For Name
+                bool containsInt = columnValue.Any(char.IsDigit) || columnValue.Contains(" BOX ") || columnValue.Contains("DPO") || columnValue.Contains("APO");
+                if (!containsInt)
+                {
+                    parseData.Name += columnValue;
+                }
+
+                //string patternCity = @"\d+[ ]+[A-Z]+[ ]+\d+";
+                //string patternUS = @"(^[\w\s]+\s\w{2}\s\d{5}(?:[-\s]\d{4})?$)";
+                string patternUS = @"(^[\w\s]+\s\w{2}[\s]+\d{5}(?:[-\s]\d{4})?$)";
+                //string patternUSZip = @"\d{5}(?:[-\s]\d{4})?$";
+                string patternUSZip = @"(\A|\s)\d{5}(-\d{4}($|\s))*";
+                string patternUSPoBox = @"(\s?[BOX]{3}\s\w?([0-9]+)?)";
+
+                // For Postal Code city state and zip
+                System.Text.RegularExpressions.Regex rgxUS = new System.Text.RegularExpressions.Regex(patternUS);
+                string resultUS = rgxUS.Match(columnValue, 0).Value;
+
+                System.Text.RegularExpressions.Regex rgxPOUS = new System.Text.RegularExpressions.Regex(patternUSPoBox);
+                string resultPOUS = rgxPOUS.Match(columnValue, 0).Value;
+
+                if (!string.IsNullOrEmpty(resultUS))
+                {
+                    // Process for US City State & Zip
+                    System.Text.RegularExpressions.Regex rgxUSZip = new System.Text.RegularExpressions.Regex(patternUSZip);
+                    string zip = rgxUSZip.Match(columnValue, 0).Value;
+
+                    parseData.Zip = zip;
+
+                    if (!string.IsNullOrEmpty(resultUS))
+                    {
+                        string NewData = columnValue.Remove(columnValue.IndexOf(zip));
+                        string state = NewData.Trim().Split(' ').Last();
+                        parseData.State = state.Trim();
+                        string city = columnValue.Trim().Remove(columnValue.IndexOf(" " + state) + 1);
+                        parseData.City = city;
+                    }
+                    else
+                    {
+                        string NewData = columnValue.Remove(columnValue.IndexOf(zip));
+                        string city = NewData.Trim().Split(' ').Last();
+                        parseData.City = city.Trim();
+                    }
+
+                    parseData.Country = "US";
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(resultPOUS) || (columnValue.Length > 0 && Char.IsDigit(columnValue[0]) && columnValue.Any(char.IsLetter))
+                        || columnValue.IndexOf("DPO") == 0 || columnValue.IndexOf("APO") == 0)
+                        parseData.Address = columnValue;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogs.LogToDb(ex);
+            }
+            return parseData;
+        }
